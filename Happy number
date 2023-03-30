@@ -1,0 +1,32 @@
+class Solution {
+public:
+int sum_of_num(int num){
+    int result=0;
+    int d=0;
+    while(num){
+     d=num%10;
+     
+           result=result+d*d;
+           num=num/10;
+    }
+    return result;
+            
+}
+    bool isHappy(int n) {
+        if(n<=0){
+            return false;
+        }
+        unordered_set<int> seta;
+        while(seta.find(n)==seta.end()){
+            seta.insert(n);
+            n=sum_of_num(n);
+            if(n==1){
+                return true;
+            }
+        }
+            
+                return false;
+               }
+    
+    
+};
