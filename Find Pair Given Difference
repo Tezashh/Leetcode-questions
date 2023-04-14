@@ -1,0 +1,19 @@
+
+bool findPair(int arr[], int size, int n){
+    sort(arr,arr+size);
+    int s=1;
+    int  e= size-1;
+    for(int i =0;i<size-1;i++)
+    {
+        if(arr[size-1]-arr[i]<n)
+        {return 0;}
+        
+        int  y = arr[i]+n;
+        if(binary_search(arr+(i+1),arr+size,y))
+        {
+            return 1;
+        }
+    }
+    return 0;
+    
+}
