@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool solve(string &S,int s,int e){
+       if(s>=e) return true;
+       if(S[s]!=S[e]) return false;
+       
+       return solve(S,s+1,e-1);
+    }
+    bool isPalindrome(string p) {
+      string S;
+      for(int i = 0;i< p.size();i++){
+        if(isalnum(p[i])){
+          S+=tolower(p[i]);
+        }
+      }
+      int n = S.size()-1;
+        return solve(S,0,n);  
+    }
+};
