@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+int partition(int num[],int sl,int el){
+    int cnt=0;
+    int pivot=num[sl];
+    for(int i=sl+1;i<el;i++){
+        if(pivot<=num[i]){
+            cnt++;
+        }
+    }
+    int index=cnt+sl;
+    swap(num[sl],num[index]);
+    
+    int i=sl;
+    int j=el;
+    while(i<pivot&&j>pivot){
+        while(i<pivot){
+            i++;
+        }
+        while(j>pivot){
+            j--;
+        }
+        if(i<index&&j>index){
+            swap(num[i++],num[j--]);
+        }
+    }
+    return pivot;
+    
+    
+}
+void quiksort(int arr[],int s,int e){
+    if(s>=e){
+        return;
+    }
+    int p=partition(arr,s,e);
+    quiksort(arr,s,p-1);
+    quiksort(arr,p+1,e);
+    
+}
+int main(){
+    int s=0;
+    
+    int arr[5]={4,3,6,2,9};
+    int n;
+    int e=-1;
+    quiksort(arr,s,e);
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }cout<<endl;
+    return 0;
+}
