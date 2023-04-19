@@ -1,0 +1,24 @@
+class Solution {
+public:
+  void solve(vector<int> num,int i,vector<vector<int>>& ans){
+      //base case
+      if(i>=num.size()){
+          ans.push_back(num);
+          return;
+      }
+      for(int j=i;j<num.size();j++){
+          swap(num[i],num[j]);
+          solve(num,i+1,ans);
+          //backtracking to make the array back to its normal form
+          swap(num[i],num[j]);
+      }
+  }
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> ans;
+        int i=0;
+        solve(nums,i,ans);
+        return ans;
+
+        
+    }
+};
