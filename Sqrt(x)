@@ -1,0 +1,32 @@
+class Solution {
+public:
+int mybinarysearch(int n){
+    int s=0;
+    int e=n;
+    int mid=s+(e-s/2);
+    int ans=-1;
+    int sqr=mid*mid;
+    while(s<=e){
+        if(sqr<n){
+            ans=mid;
+            s=mid+1;
+        }
+        else if(sqr==mid){
+            
+            return mid;
+
+        }
+        else{
+            e=mid-1;
+      
+
+        }
+        mid=s+(e-s)/2;
+    }
+    return ans;
+}
+    int mySqrt(int x) {
+
+        return mybinarysearch(x);
+    }
+};
