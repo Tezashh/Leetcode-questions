@@ -1,0 +1,30 @@
+class Solution
+{
+    public:
+  
+    //Function to find the maximum money the thief can get.
+int solved(int arr[], int start, int n, vector<int> &dp){
+        
+        if(n==0)return 0;
+        
+        if(start>=n)return 0;
+        
+        if(dp[start]!=-1)return dp[start];
+        
+        int sum = solved(arr, start+1, n, dp);
+        
+        int sum2 = max(solved(arr, start+2, n, dp) + arr[start], solved(arr, start+1, n, dp));
+        
+        
+        
+        return dp[start] = max(sum, sum2);
+    }
+    
+    
+    int FindMaxSum(int arr[], int n)
+    {
+        // Your code here
+        vector<int> dp(n+1, -1);
+        return solved(arr, 0, n, dp);
+    }
+};
