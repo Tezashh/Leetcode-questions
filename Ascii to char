@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    string s;
+    cin >> s;
+    reverse(s.begin(), s.end());
+    string res = "";
+    int i = 0;
+    while (i < s.size() - 1) {
+        string x = "";
+        x += s[i];
+        x += s[i + 1];
+        if (x == "32") {
+            res += " ";
+            i += 2;
+        }
+        else if ((stoi(x) >= 65 && stoi(x) <= 91) || (stoi(x) >= 97 && stoi(x) < 100)) {
+            res += static_cast<char>(stoi(x));
+            i += 2;
+        }
+        else {
+            x += s[i + 2];
+            res += static_cast<char>(stoi(x));
+            i += 3; // This should be increased by 3 since you're reading three characters.
+        }
+    }
+    cout << res;
+    return 0;
+}
