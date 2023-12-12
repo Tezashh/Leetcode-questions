@@ -1,0 +1,68 @@
+#include <bits/stdc++.h> 
+/*************************************************************
+    
+    Following is the Binary Tree node structure.
+    
+    class BinaryTreeNode {
+        public : 
+            T data;
+            BinaryTreeNode<T> *left;
+            BinaryTreeNode<T> *right;
+    
+            BinaryTreeNode(T data) {
+                this -> data = data;
+                left = NULL;
+                right = NULL;
+            }
+    };
+    
+*************************************************************/
+void solve(BinaryTreeNode<int> *root, int k, vector<int> path, vector<vector<int>>& ans)
+{
+    // base case
+    if(root == NULL)
+        return ;
+
+    path.push_back(root -> data) ;
+
+    // recursive calls 
+    solve(root -> left, k, path, ans) ;
+    solve(root -> right, k, path, ans) ;
+
+    // initializations needed
+    int sum = 0 , sizee = path.size() ;
+    vector<int> res ;
+
+    // check if path sum == k
+    for(int i = sizee-1 ; i >= 0 ; i--)
+    {
+        sum += path[i] ;
+        res.push_back(path[i]) ;
+
+        if(sum == k)
+        {
+            // reverese the path(direction : from leaf root towards leaf)
+            reverse(res.begin(), res.end()) ;
+            
+            // store the path
+            ans.push_back(res) ;
+        }
+    }
+
+    // remove element from path after returning
+    path.pop_back() ;
+}
+
+vector<vector<int>> kPathSum(BinaryTreeNode<int> *root, int k) 
+{
+    if(root == NULL)
+        return {{}} ;
+
+    // initializations 
+    vector<vector<int>> ans ;
+    vector<int> path ;
+
+    solve(root, k, path, ans) ;
+
+    return ans;
+}
