@@ -1,0 +1,19 @@
+
+/*You are required to complete this function*/
+int gcd(int a, int b) {
+    if (b == 0)
+        return a;
+    return gcd(b, a % b);
+}
+void addFraction(int num1, int den1, int num2,int den2)
+{
+//Your code here
+
+int deno=den1*den2;
+int nom=num1*den2+num2*den1;
+int common_factor=gcd(deno,nom);
+deno=deno/common_factor;
+nom=nom/common_factor;
+cout<<nom<<"/"<<deno<<endl;
+}
+ 
