@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int solve(int n){
+    int result=1;
+    while(n>0){
+        result*=n;
+        n--;
+    }
+    return result;
+    
+}
+int main(){
+    int n;
+    cin>>n;
+    int ans=solve(n-1);
+    cout<<ans<<endl;
+    return 0;
+    
+}
